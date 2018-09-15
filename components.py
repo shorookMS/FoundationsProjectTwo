@@ -4,19 +4,23 @@ class Store():
         """
         Initializes a new store with a name.
         """
-        # your code goes here!
+        self.name = name
+        self.products=[]
 
     def add_product(self, product):
         """
         Adds a product to the list of products in this store.
         """
-        # your code goes here!
+        self.products.append(product)
+
 
     def print_products(self):
         """
         Prints all the products of this store in a nice readable format.
         """
-        # your code goes here!
+        for prod in self.products:
+            print(prod)
+            print()
 
 
 class Product():
@@ -24,10 +28,12 @@ class Product():
         """
         Initializes a new product with a name, a description, and a price.
         """
-        # your code goes here!
+        self.name = name 
+        self.description = description
+        self.price = price
 
     def __str__(self):
-        # your code goes here!
+        return "\tProduct Name: %s\n\tDescription: %s \n\tPrice: %s KWD" % (self.name, self.description, self.price)
 
 
 class Cart():
@@ -35,28 +41,47 @@ class Cart():
         """
         Initializes a new cart with an empty list of products.
         """
-        # your code goes here!
+        self.products = []
 
     def add_to_cart(self, product):
         """
         Adds a product to this cart.
         """
-        # your code goes here!
+        self.products.append(product)
 
     def get_total_price(self):
         """
         Returns the total price of all the products in this cart.
         """
-        # your code goes here!
+        total = 0
+        for pr in self.products:
+            total += pr.price
+
+        return total
+
 
     def print_receipt(self):
         """
         Prints the receipt in a nice readable format.
         """
-        # your code goes here!
+        print("~-"*10)
+        print("Here's your receipt OwO!!")
+        for x in self.products:
+            print(x)
+            print()
+        print("Your total is: %s" % self.get_total_price())
 
     def checkout(self):
         """
         Does the checkout.
         """
-        # your code goes here!
+        self.print_receipt()
+        while True:
+            answer = str(input("Confirm?(yes/no)")).lower()
+            if answer == "yes":
+                return True
+            elif answer == "no":
+                return False
+            else:
+                print("invalid input.")
+                continue
