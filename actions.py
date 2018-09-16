@@ -60,7 +60,7 @@ def pick_products(cart, picked_store):
     while True:
         userInputItem = input("Enter here: ").lower()
         if userInputItem == "back" :
-            break
+            return False
         elif userInputItem == "checkout" :
             return True
         elif [ True for x in picked_store.products if  x.name.lower() == userInputItem] :
